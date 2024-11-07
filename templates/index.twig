@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome!</title>
+    <title>{{ title }}</title>
 </head>
+
 <body>
 {% block body %}
-    <h1>Привет, Мир!</h1>
-    {{ text }}
+    <h1>{{ title }}</h1>
+
+    <form action="/add-player" method="POST">
+        <div style="margin-bottom: 10px">
+            <label for="input-fio">ФИО</label>
+            <input id="input-fio" type="text" name="fio" required>
+        </div>
+        <div>
+            <label for="input-fio">Email</label>
+            <input id="input-fio" type="email" name="email" required>
+        </div>
+        <button type="submit" style="margin-top: 10px">Добавить</button>
+    </form>
+
+    <form action="/send-emails" method="POST">
+        <button type="submit"
+                style="margin-top: 30px; padding: 10px; border-radius: 10px"
+        >
+            Отправить письма
+        </button>
+    </form>
+
+    <div style="margin-top: 30px">
+        <h2>Игроки</h2>
+        <table>
+            <tr>
+                <th>Фио</th>
+                <th>Email</th>
+            </tr>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.fio }}</td>
+                    <td>{{ player.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
 </body>
 </html>
