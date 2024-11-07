@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Player;
-use App\Services\SendEmailService;
+use App\Service\SendEmailService;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
